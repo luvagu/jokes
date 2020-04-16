@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    background-image: url(start.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.box {
+    padding: .5rem;
+    /* height: 300px; */
+    width: 90%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.03);
+    border-radius: 4px;
+    opacity: .85;
+    color: darkslategrey;
+    font-family: "Lucida Console", Monaco, monospace;
+    /* font-size: 1rem; */
+    font-weight: 700;
+    background-color: beige;
+    /* border-bottom: 1px solid #F9F2D6;
+    border-right: 1px solid #F9F2D6; */
+}
+
+h1 {
+    color: saddlebrown;
+    font-size: 1.5rem;
+    font-weight: bold;
+    animation: blink 1s linear 3;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: .5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.mb {
+    margin-bottom: 5px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: small;
+    color: silver;
+}
+
+footer a {
+    color: rebeccapurple;
+}
+
+footer a:hover {
+    color: purple;
+}
