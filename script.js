@@ -72,6 +72,6 @@ const getJokes = async function() {
 if (cats) {
     for (let i = 0; i < cats.length; i++) {
         console.log('Adding event listener to radio button id:', cats[i].value);
-        cats[i].addEventListener("change", getJokes);
+        cats[i].addEventListener("click", getJokes);
     }
 }
