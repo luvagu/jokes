@@ -19,7 +19,7 @@
                 <input type="radio" name="category" id="Dark" value="Dark"> <label for="Dark">Dark</label>
             </section>
             <section class="mb">
-                <label>Flag(s) to blacklist: </label>
+                <label>Flag(s) (optional): </label>
                 <input type="checkbox" name="flags" id="nsfw" value="nsfw"> <label
                     for="nsfw">nsfw</label>
                 <input type="checkbox" name="flags" id="religious" value="religious"> <label
@@ -29,7 +29,11 @@
                 <input type="checkbox" name="flags" id="racist" value="racist"> <label for="racist">racist</label>
                 <input type="checkbox" name="flags" id="sexist" value="sexist"> <label for="sexist">sexist</label>
             </section>
-            <h1 id="joke">Let me make you laugh, choose a category of jokes to start!</h1>
+            <section class="mb">
+                <label for="searchTerm">Contains term (optional): </label>
+                <input type="text" name="searchTerm" id="searchTerm" placeholder="include a joke with this term">
+            </section>
+            <h1 id="joke">Let me make you laugh, choose a jokes' category to start!</h1>
         </div>
     </main>
     <footer>

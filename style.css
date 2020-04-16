@@ -40,7 +40,20 @@ h1 {
     color: saddlebrown;
     font-size: 1.5rem;
     font-weight: bold;
-    animation: blink 1s linear 3;
+    animation: blink .6s linear 5;
+}
+
+#searchTerm {
+    border: 2px solid white;
+    -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    background: beige;
+    margin: 0;
+    min-width: 220px;
+    color: saddlebrown;
+    font-weight: 700;
 }
 
 @keyframes blink {

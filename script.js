@@ -1,5 +1,6 @@
 const cats = document.querySelectorAll('input[name=category]');
 const flags = document.querySelectorAll('input[name=flags]');
+const searchTerm = document.querySelector('#searchTerm');
 
 function getCategories() {
     let radio = cats;
@@ -35,7 +36,7 @@ function getFlags() {
 
 const getJokes = async function() {
     try {
-        const response = await fetch(`https://sv443.net/jokeapi/v2/joke/${getCategories()}?blacklistFlags=${getFlags()}`)
+        const response = await fetch(`https://sv443.net/jokeapi/v2/joke/${getCategories()}?blacklistFlags=${getFlags()}&contains=${searchTerm.value}`)
         const data = await response.json();
         const { category, type, joke, setup, delivery, error, message } = data;
 
@@ -43,9 +44,18 @@ const getJokes = async function() {
             return document.querySelector('body').style.backgroundImage = `url(${img.toLowerCase()}.jpg`;
         }
 
+        // handle errors
         if (error) {
+            if (getCategories().length === 0) {
+                console.log(`Ooooops, ${message}, Please choose a category and try again!`);
+                return document.querySelector('#joke').textContent = `Ooooops, ${message}, Please choose a category and try again!`;
+            }
+            if (searchTerm.value.length > 0) {
+                console.log(`Ooooops, ${message}, Please choose a different search term and try again!`);
+                return document.querySelector('#joke').textContent = `Ooooops, ${message}, Please choose a different search term and try again!`;
+            }
             console.log(`Ooooops, ${message}, Please try again!`);
-            return document.querySelector('#joke').textContent = `Ooooops, ${message}, Please try again!`
+            return document.querySelector('#joke').textContent = `Ooooops, ${message}, Please try again!`;
         }
         
         if (type == 'single') {
@@ -75,3 +85,12 @@ if (cats) {
         cats[i].addEventListener("click", getJokes);
     }
 }
+
+searchTerm.addEventListener('keypress', function(e) {
+    if (searchTerm.value.length > 0 && e.keyCode === 13) {
+        console.log('Enter key pressed');
+        console.log('Search joke that contains term:', searchTerm.value);
+        getJokes();
+    }
+});
+
