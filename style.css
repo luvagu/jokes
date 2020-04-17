@@ -84,9 +84,9 @@ footer {
 }
 
 footer a {
-    color: rebeccapurple;
+    color: gold;
 }
 
 footer a:hover {
-    color: purple;
+    color: goldenrod;
 }
