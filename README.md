@@ -9,3 +9,7 @@ In this example I'm using [JokeAPI REST API](https://sv443.net/jokeapi/v2) to gr
 ### `getJokes()`
 
 The main function is `getJokes()` and uses the `async await method with fetch()` learnd in this section of the course
+
+# Demo
+
+You can view the working demo [HERE](https://luiavag.github.io/jokes/)
