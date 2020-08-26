@@ -1,49 +1,37 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="LuVaGu, luiavag on github">
-    <title>Jokes - JokeAPI REST API</title>
+    <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <script src="version.js"></script>
 </head>
+
 <body>
-    <main class="flex">
-        <div class="box">
-            <section class="mb">
-                <label>Category: </label>
-                <input type="radio" name="category" id="Any" value="Any"> <label
-                    for="Any">Any</label>
-                <input type="radio" name="category" id="Programming" value="Programming"> <label for="Programming">Programming</label>
-                <input type="radio" name="category" id="Miscellaneous" value="Miscellaneous"> <label
-                    for="Miscellaneous">Miscellaneous</label>
-                <input type="radio" name="category" id="Dark" value="Dark"> <label for="Dark">Dark</label>
-            </section>
-            <section class="mb">
-                <label>Flag(s) (optional): </label>
-                <input type="checkbox" name="flags" id="nsfw" value="nsfw"> <label
-                    for="nsfw">nsfw</label>
-                <input type="checkbox" name="flags" id="religious" value="religious"> <label
-                    for="religious">religious</label>
-                <input type="checkbox" name="flags" id="political" value="political"> <label
-                    for="political">political</label>
-                <input type="checkbox" name="flags" id="racist" value="racist"> <label for="racist">racist</label>
-                <input type="checkbox" name="flags" id="sexist" value="sexist"> <label for="sexist">sexist</label>
-            </section>
-            <section class="mb">
-                <label for="searchTerm">Contains term (optional): </label>
-                <input type="text" name="searchTerm" id="searchTerm" placeholder="include a joke with this term">
-            </section>
-            <h1 id="joke">Let me make you laugh, choose a jokes' category to start!</h1>
+    <main class="container">
+        <h1>Time for a laugh..</h1>
+        <nav class="categories" data-categories></nav>
+        <div class="filters" data-filters>
+            Filters: 
+            <input type="checkbox" name="flags" value="nsfw" id="nsfw"> <label for="nsfw">nsfw</label>
+            <input type="checkbox" name="flags" value="religious" id="religious"> <label for="religious">religious</label>
+            <input type="checkbox" name="flags" value="political" id="political"> <label for="political">political</label>
+            <input type="checkbox" name="flags" value="racist" id="racist"> <label for="racist">racist</label>
+            <input type="checkbox" name="flags" value="sexist" id="sexist"> <label for="sexist">sexist</label>
+            <input type="text" name="searchTerm" id="searchTerm" placeholder="includes term..">
         </div>
+        <div id="joke">..click a category to start!</div>
     </main>
     <footer>
-        Project by 
-        <a href="https://github.com/luiavag/jokes">luiavag</a> 
-        - Total Jokes <span id="numJokes"></span> 
-        - Grabbed from 
-        <a href="https://sv443.net/jokeapi/v2" target="_blank">JokeAPI v<span id="version"></span></a> 
+        Project by
+        <a href="https://github.com/luiavag/jokes">luiavag</a>
+        - Total Jokes <span id="numJokes"></span>
+        - Grabbed from
+        <a href="https://sv443.net/jokeapi/v2" target="_blank">JokeAPI v<span id="version"></span></a>
     </footer>
-    <script type="text/javascript" src="script.js"></script>
-    <script type="text/javascript" src="version.js"></script>
 </body>
+
 </html>
