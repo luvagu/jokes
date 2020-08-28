@@ -6,7 +6,6 @@ const apiInfo = (async function (param) {
 
         document.querySelector('#version').textContent = version
         document.querySelector('#numJokes').textContent = jokes.totalCount
-
     } catch (err) {
         console.log('Oooops', err);
     }
