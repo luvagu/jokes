@@ -21,7 +21,7 @@
 const flags = document.querySelectorAll('input[name=flags]')
 const searchField = document.querySelector('#searchField')
 const categoriesHtml = document.querySelector('[data-categories]')
-const filtersHtml = document.querySelector('[data-filters]')
+// const filtersHtml = document.querySelector('[data-filters]')
 const displayJokes = document.querySelector('#joke')
 
 function getFlags() {
