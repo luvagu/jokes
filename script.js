@@ -89,5 +89,7 @@ searchField.addEventListener('keydown', function (e) {
         // console.log('Enter key pressed')
         // console.log('Search joke that contains term:', searchField.value)
         getJokes('Any', searchField.value)
+        // reset searchField
+        searchField.value = ''
     }
 })
