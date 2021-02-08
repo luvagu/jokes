@@ -1,4 +1,4 @@
-const apiInfo = (async function (param) {
+const apiInfo = (async function () {
     try {
         const response = await fetch('https://sv443.net/jokeapi/v2/info')
         const data = await response.json();

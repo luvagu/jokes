@@ -4,7 +4,8 @@ const categoriesHtml = document.querySelector('[data-categories]')
 const filtersHtml = document.querySelector('[data-filters]')
 const displayJokes = document.querySelector('#joke')
 
-const populateCategories = (async function () {
+// Run API call on page load
+(async function () {
     try {
         const response = await fetch('https://sv443.net/jokeapi/v2/categories')
         const data = await response.json()
@@ -23,7 +24,7 @@ const populateCategories = (async function () {
     }
 })()
 
-function getFlags() {
+const getFlags = () => {
     let checkboxChecked = []
     // loop over them all
     for (var i = 0; i < flags.length; i++) {

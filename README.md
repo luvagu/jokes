@@ -12,4 +12,4 @@ The main function is `getJokes()` and uses the `async await method with fetch()`
 
 # working demo
 
-You can view the working demo [HERE](https://luiavag.github.io/jokes/)
+You can view the working demo [HERE](https://luvagu.github.io/jokes/)
