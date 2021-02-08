@@ -1,30 +1,30 @@
-const flags = document.querySelectorAll('input[name=flags]')
-const searchTerm = document.querySelector('#searchTerm')
-const categoriesHtml = document.querySelector('[data-categories]')
-const filtersHtml = document.querySelector('[data-filters]')
-const displayJokes = document.querySelector('#joke')
-
-// Run API call on page load
-(async function () {
+// Run API call on page load to populate categories
+(async function() {
     try {
         const response = await fetch('https://sv443.net/jokeapi/v2/categories')
         const data = await response.json()
         const { categories } = data
         //console.log(categories)
 
-        categories.forEach(element => {
-            let addButton = document.createElement('button')
-            addButton.addEventListener("click", () => getJokes(element))
-            addButton.innerText = element
-            categoriesHtml.appendChild(addButton)
+        categories.forEach(category => {
+            let categoryBtn = document.createElement('button')
+            categoryBtn.addEventListener("click", () => getJokes(category))
+            categoryBtn.innerText = category
+            categoriesHtml.appendChild(categoryBtn)
         });
 
     } catch (err) {
-        return console.log('Oooops, could not load categories', err);
+        return console.log('Oooops, could not load categories', err.message);
     }
-})()
+})();
 
-const getFlags = () => {
+const flags = document.querySelectorAll('input[name=flags]')
+const searchField = document.querySelector('#searchField')
+const categoriesHtml = document.querySelector('[data-categories]')
+const filtersHtml = document.querySelector('[data-filters]')
+const displayJokes = document.querySelector('#joke')
+
+function getFlags() {
     let checkboxChecked = []
     // loop over them all
     for (var i = 0; i < flags.length; i++) {
@@ -43,19 +43,19 @@ const getFlags = () => {
 //     document.querySelector('body').style.backgroundImage = `url(${img.toLowerCase()}.jpg`
 // }
 
-const getJokes = async (subject) => {
+async function getJokes(category, searchTerm = '') {
     try {
-        const response = await fetch(`https://sv443.net/jokeapi/v2/joke/${subject}?blacklistFlags=${getFlags()}&contains=${searchTerm.value}`)
+        const response = await fetch(`https://sv443.net/jokeapi/v2/joke/${category}?blacklistFlags=${getFlags()}&contains=${searchTerm}`)
         const data = await response.json()
-        const { category, type, joke, setup, delivery, error, message } = data
+        const { type, joke, setup, delivery, error, message } = data
 
         // handle errors
         if (error) {
-            if (subject === '') {
+            if (category === '') {
                 //console.log(`Ooooops, ${message}, Please choose a category and try again!`)
                 return displayJokes.textContent = `Ooooops, ${message}, Please choose a category and try again!`
             }
-            if (searchTerm.value.length > 0) {
+            if (searchField.value.length > 0) {
                 //console.log(`Ooooops, ${message}, Please choose a different search term and try again!`)
                 return displayJokes.textContent = `Ooooops, ${message}, Please choose a different search term and try again!`
             }
@@ -80,14 +80,14 @@ const getJokes = async (subject) => {
 
     } catch (err) {
         // console.log('Oooops', err)
-        return displayJokes.textContent = `Oooops: ${err}`
+        return displayJokes.textContent = `Oooops: ${err.message}`
     }
 }
 
-searchTerm.addEventListener('keypress', function (e) {
-    if (searchTerm.value.length > 0 && e.keyCode === 13) {
+searchField.addEventListener('keydown', function (e) {
+    if (searchField.value.length > 0 && e.key === 'Enter') {
         // console.log('Enter key pressed')
-        // console.log('Search joke that contains term:', searchTerm.value)
-        getJokes('Any')
+        // console.log('Search joke that contains term:', searchField.value)
+        getJokes('Any', searchField.value)
     }
 })
