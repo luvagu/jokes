@@ -1,4 +1,4 @@
-// Run API call on page load to populate categories
+// Run API call on page load to populate the categories
 (async function() {
     try {
         const response = await fetch('https://sv443.net/jokeapi/v2/categories')
@@ -44,6 +44,9 @@ function getFlags() {
 // }
 
 async function getJokes(category, searchTerm = '') {
+    // show loading state
+    displayJokes.innerText = 'Loading joke...'
+
     try {
         const response = await fetch(`https://sv443.net/jokeapi/v2/joke/${category}?blacklistFlags=${getFlags()}&contains=${searchTerm}`)
         const data = await response.json()
@@ -53,14 +56,14 @@ async function getJokes(category, searchTerm = '') {
         if (error) {
             if (category === '') {
                 //console.log(`Ooooops, ${message}, Please choose a category and try again!`)
-                return displayJokes.textContent = `Ooooops, ${message}, Please choose a category and try again!`
+                return displayJokes.innerText = `Ooooops, ${message}, Please choose a category and try again!`
             }
             if (searchField.value.length > 0) {
                 //console.log(`Ooooops, ${message}, Please choose a different search term and try again!`)
-                return displayJokes.textContent = `Ooooops, ${message}, Please choose a different search term and try again!`
+                return displayJokes.innerText = `Ooooops, ${message}, Please choose a different search term and try again!`
             }
             // console.log(`Ooooops, ${message}, Please try again!`)
-            return displayJokes.textContent = `Ooooops, ${message}, Please try again!`
+            return displayJokes.innerText = `Ooooops, ${message}, Please try again!`
         }
 
         if (type == 'single') {
@@ -68,7 +71,7 @@ async function getJokes(category, searchTerm = '') {
             // console.log('Type', type)
             // console.log('Joke', category)
             //setBackground(category)
-            return displayJokes.textContent = `${joke}`
+            return displayJokes.innerText = `${joke}`
         } else {
             // console.log('Category', category)
             // console.log('Type', type)
@@ -80,7 +83,7 @@ async function getJokes(category, searchTerm = '') {
 
     } catch (err) {
         // console.log('Oooops', err)
-        return displayJokes.textContent = `Oooops: ${err.message}`
+        return displayJokes.innerText = `Oooops: ${err.message}`
     }
 }
 
